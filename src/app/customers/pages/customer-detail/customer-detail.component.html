@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="jumbotron container mt-5 col-md-12">
+    <h1 class="display-6"><span>Customer Name:</span>{{(customer$ | async).customername}}</h1>
+    <p class="lead"><span>Address:</span>{{(customer$ | async).address.addressline1}}</p>
+    <p class="lead"><span>Vat Number:</span>{{(customer$ | async).vat}}</p>
+    <hr>
+    <h2 class="display-6"><span>Contact Person:</span>{{(customer$ | async).firstname}} {{(customer$ | async).lastname}}</h2>
+    <p><span>email:</span>{{(customer$ | async).email}}</p>
+    <p><span>Phone number:</span>{{(customer$ | async).phonenumber}}</p>
+    <a class="btn btn-primary" (click)="onEdit()" role="button">Edit</a>
+  </div>
+  <!-- <app-projects-of-customer></app-projects-of-customer> -->
+</div>

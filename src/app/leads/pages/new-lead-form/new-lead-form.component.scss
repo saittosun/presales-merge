@@ -1,0 +1,22 @@
+:host ::ng-deep .mat-form-field {
+  display: block;
+  max-width: fit-content;
+  label {
+    font-weight: bolder;
+  }
+}
+
+.required {
+  display: flex;
+  &::before{
+    content:"*";
+    font-weight:bold;
+    color: red;
+    margin-right: 0.5rem;
+  }
+}
+
+.unrequired {
+  margin-left: 1rem;
+}
+

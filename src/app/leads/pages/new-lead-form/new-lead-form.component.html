@@ -1,0 +1,78 @@
+<form class="container mt-5" [formGroup]="leadNewForm" (ngSubmit)="onSubmit()" novalidate>
+  <h3 class="font-weight-bolder">New Lead Form</h3>
+  <div class="row ">
+    <div class="col">
+      <app-with-validation-input [label]="'Lead Name'" [validations]="{required:'Lead Name is required'}">
+        <input appInputRef class="form-control" formControlName="leadname" type="text" placeholder="Lead name" />
+      </app-with-validation-input>
+      <app-with-validation-input [label]="'Customer'" [validations]="{required:'Customer is required'}">
+        <input appInputRef class="form-control" formControlName="customer" type="text" placeholder="Customer" list="inputCustomer"/>
+        <datalist id="inputCustomer" type="text">
+          <option *ngFor="let lead of leads">
+            {{lead.customer}}
+          </option>
+        </datalist>
+      </app-with-validation-input>
+      <app-with-validation-input [label]="'status'" [validations]="{required:'status is required'}">
+        <input appInputRef class="form-control" (change)="onStatusChange()" formControlName="status" type="text" placeholder="Status" list="inputStatus"/>
+        <datalist id="inputStatus" type="text">
+          <option *ngFor="let status of statusArray">{{status}}</option>
+        </datalist>
+      </app-with-validation-input>
+      <app-with-validation-input [label]="'resolution'" [validations]="{required:'resolution is required'}">
+        <input appInputRef class="form-control" (change)="onResolutionChange()" formControlName="resolution" type="text" placeholder="Resolution" list="inputResolution"/>
+        <datalist id="inputResolution" type="text">
+          <option *ngFor="let resolution of resolutionArray" >{{resolution}}</option>
+        </datalist>
+      </app-with-validation-input>
+      <app-with-validation-input *ngIf="leadNewForm.get('resolution').value != 'ongoing'" [label]="'Resolution Comment'">
+        <textarea appInputRef class="form-control" formControlName="resolutionComment" type="text" placeholder="Resolution Comment..."></textarea>
+      </app-with-validation-input>
+      <app-with-validation-input [label]="'Notes'">
+        <textarea appInputRef class="form-control" formControlName="notes" type="text" placeholder="Notes"></textarea>
+      </app-with-validation-input>
+    </div>
+    <div class="col">
+      <mat-form-field appearance="fill" class="required">
+        <mat-label>Pitch Date</mat-label>
+        <input matInput [matDatepicker]="pickerPitch" formControlName="pitchDate">
+        <mat-datepicker-toggle matSuffix [for]="pickerPitch"></mat-datepicker-toggle>
+        <mat-datepicker #pickerPitch></mat-datepicker>
+        <mat-error *ngIf="leadNewForm.get('pitchDate').hasError('required')">
+          Valid pitch date required.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="required">
+        <mat-label>Offer Date</mat-label>
+        <input matInput [matDatepicker]="pickerOffer" [min]="leadNewForm.get('pitchDate').value" formControlName="offerDate">
+        <mat-datepicker-toggle matSuffix [for]="pickerOffer"></mat-datepicker-toggle>
+        <mat-datepicker #pickerOffer></mat-datepicker>
+        <mat-error *ngIf="leadNewForm.get('offerDate').hasError('required')">
+          Valid offer date required.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="unrequired">
+        <mat-label>Offer Presantation Date</mat-label>
+        <input matInput [matDatepicker]="pickerPresantation" [min]="leadNewForm.get('offerDate').value"  formControlName="presantationDate">
+        <mat-datepicker-toggle matSuffix [for]="pickerPresantation"></mat-datepicker-toggle>
+        <mat-datepicker #pickerPresantation></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="unrequired">
+        <mat-label>BAFO Date</mat-label>
+        <input matInput [matDatepicker]="pickerBafo" [min]="leadNewForm.get('presantationDate').value"  formControlName="bafoDate">
+        <mat-datepicker-toggle matSuffix [for]="pickerBafo"></mat-datepicker-toggle>
+        <mat-datepicker #pickerBafo></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="unrequired">
+        <mat-label>Start Date</mat-label>
+        <input matInput [matDatepicker]="pickerStart" [min]="leadNewForm.get('bafoDate').value"  formControlName="startDate">
+        <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+        <mat-datepicker #pickerStart></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+  <p class="required">Required field!</p>
+  <button type="submit"  class="btn btn-secondary">Submit</button>
+</form>
+

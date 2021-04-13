@@ -1,0 +1,66 @@
+<form class="container mt-5" [formGroup]="leadForm" (ngSubmit)="onSubmit()" novalidate>
+  <div class="row">
+    <div class="col-6">
+      <h3 class="font-weight-bolder">Customer</h3>
+      <app-with-validation-input [label]="'Customer Name'" [validations]="{required:'Customer Name is required'}">
+        <input appInputRef class="form-control" formControlName="customername" type="text" placeholder="Customer name" />
+      </app-with-validation-input>
+      <app-with-validation-input [label]="'Address'" [validations]="{required:'Address is required'}">
+        <input appInputRef class="form-control" formControlName="addressline1" type="text" placeholder="Type address" />
+      </app-with-validation-input>
+      <app-with-validation-input [label]="'Address 2'">
+        <input appInputRef class="form-control" formControlName="addressline2" type="text" placeholder="Type address" />
+      </app-with-validation-input>
+      <div class="form-row">
+        <div class="col-md-4">
+          <app-with-validation-input [label]="'Country'" [validations]="{required:'Country is required'}">
+            <input appInputRef class="form-control" formControlName="country" type="text" placeholder="Choose a country" list="inputCountry"/>
+            <datalist  id="inputCountry" type="text">
+              <option *ngFor="let country of countries">{{country.name}}</option>
+            </datalist>
+          </app-with-validation-input>
+        </div>
+        <div class="col-md-4">
+          <app-with-validation-input [label]="'City'" [validations]="{required:'City is required'}">
+            <input appInputRef class="form-control" formControlName="city" type="text" placeholder="Choose a city" />
+          </app-with-validation-input>
+        </div>
+        <div class="col-md-4">
+          <app-with-validation-input [label]="'State'" [validations]="{required:'State is required'}">
+            <input appInputRef class="form-control" formControlName="state" type="text" placeholder="Choose a state" />
+          </app-with-validation-input>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-4">
+          <app-with-validation-input [label]="'Zip Code'" [validations]="{required:'Zip code is required'}">
+            <input appInputRef class="form-control" formControlName="zip" type="text" placeholder="Type zip code" />
+          </app-with-validation-input>
+        </div>
+        <div class="col-md-6">
+          <app-with-validation-input [label]="'Vat number'" [validations]="{required:'Vat number is required'}">
+            <input appInputRef class="form-control" formControlName="vat" type="number" placeholder="Type vat number" />
+          </app-with-validation-input>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <h3 class="font-weight-bolder">Contact Person</h3>
+      <app-with-validation-input [label]="'First Name'" [validations]="{required:'First name is required'}">
+        <input appInputRef class="form-control" formControlName="firstname" type="text" placeholder="First name" />
+      </app-with-validation-input>
+      <app-with-validation-input [label]="'Last Name'" [validations]="{required:'Last name is required'}">
+        <input appInputRef class="form-control" formControlName="lastname" type="text" placeholder="Last name" />
+      </app-with-validation-input>
+      <app-with-validation-input [label]="'Email'" [validations]="{required:'Email is required', email: 'email format is not true!'}">
+        <input appInputRef class="form-control" formControlName="email" type="text" placeholder="Type an email" />
+      </app-with-validation-input>
+      <app-with-validation-input [label]="'Phone Number'" [validations]="{required:'Phone is required', minLength: 'Phone number must be at least 10 numbers'}">
+        <input appInputRef class="form-control" formControlName="phonenumber" type="number" placeholder="Type a phone number" />
+      </app-with-validation-input>
+    </div>
+  </div>
+  <p class="required">Required field!</p>
+  <button type="submit"  class="btn btn-secondary float-right">Submit</button>
+</form>
+

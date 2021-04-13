@@ -1,0 +1,23 @@
+<div class="container mt-5">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Customer Name</th>
+        <th scope="col">Projects Of Customer</th>
+        <th scope="col">Address</th>
+        <th scope="col">Contact Person</th>
+        <th scope="col">Customer Detail</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customer of customers$ | async" routerLink="customer-detail/{{customer.id}}">
+        <td>{{customer.customername}}</td>
+        <td>{{customer.projectname}}</td>
+        <td>{{customer.address.addressline1}}</td>
+        <td>{{customer.firstName}} {{customer.lastname}}</td>
+        <td><i class="fa fa-arrow-circle-right"></i></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

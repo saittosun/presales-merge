@@ -1,0 +1,19 @@
+.line {
+  width: 23px;
+  height: 3px;
+  margin: 5px;
+  transition: all .4s;
+}
+
+.nav-item {
+  position: relative;
+  .dropdown-menu {
+    top: 47px;
+  }
+}
+
+img {
+  filter: invert(96%) sepia(72%) saturate(187%) hue-rotate(185deg) brightness(108%) contrast(101%);
+  width: 7%;
+  margin-right: 10px;
+}

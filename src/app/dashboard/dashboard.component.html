@@ -1,0 +1,29 @@
+<div class="container mt-5">
+  <div class="row mb-5">
+    <div class="col-md-6">
+      <app-search (searchcriteria)="searchThis($event)"></app-search>
+    </div>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Project Name</th>
+        <th scope="col">Customer Name</th>
+        <th scope="col">Status</th>
+        <th scope="col">Due</th>
+        <th scope="col">Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let lead of filteredCustomers$ | async"
+        routerLink="customers/customer-detail/{{lead.id}}">
+        <td>{{lead.name}}</td>
+        <td>{{lead.customer}}</td>
+        <td>{{lead.status}}</td>
+        <td>{{lead.date}}</td>
+        <td><i class="fa fa-arrow-circle-right"></i></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

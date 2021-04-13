@@ -1,0 +1,19 @@
+.full-width-table {
+  width: 100%;
+ }
+
+ .data-table {
+   margin: 50px auto;
+   width: 80%;
+ }
+
+ th {
+   background: black;
+   color: white;
+   font-size: 16px;
+ }
+
+ :host ::ng-deep .mat-sort-header-arrow {
+   opacity: 1 !important;
+   color: white;
+ }

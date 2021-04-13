@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="/">
+    <img src="../../assets/small-128.png" alt="">
+    LEAD FOLLOWUP</a>
+  <button class="navbar-toggler nav-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" (click)="onToggleNavbarCollapsed()">
+    <div class="bg-light line"></div>
+    <div class="bg-light line"></div>
+    <div class="bg-light line"></div>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngClass]="{ show: !navbarCollapsed }">
+   <ul class="navbar-nav ml-auto">
+    <app-search></app-search>
+      <li class="nav-item"  appDropdown #r="appDropdown" routerLinkActive="active">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          New
+        </a>
+        <div class="dropdown-menu" [ngClass]="{'show': r.isOpen}" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="/leads/new-lead-form">New Lead Form</a>
+          <a class="dropdown-item" routerLink="/customers/new-customer-form">New Customer Form</a>
+        </div>
+       </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/customers">Customers</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/leads">Leads</a>
+      </li>
+     </ul>
+   </div>
+ </nav>
